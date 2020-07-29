@@ -1,0 +1,36 @@
+{
+  "name": "fakeimage",
+  "version": "1.0.0",
+  "description": "image placeholder ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pm2 start ecosystem.config.js --watch --env dev",
+    "dev: test": "pm2 start ecosystem.config.js --watch --env test",
+    "dev: prod": "pm2 start ecosystem.config.js --watch --env prod",
+    "build": "babel src --out-dir dist",
+    "line": "eslint src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.5.0",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "canvas": "^2.6.1",
+    "koa": "^2.13.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-router": "7",
+    "log4js": "^6.3.0"
+  }
+}
