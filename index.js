@@ -7,24 +7,24 @@ const {
   getConfig
 } = require('./src/utils/index')
 
-const { FakeImg } = require('./src/utils/index')
-
+const FakeImg = require('./src/utils/fakeImg')
 
 
 const router = new Router()
 router.get('/', async (ctx) => {
   console.log('--------home')
-  ctx.body = 'tttt'
+  ctx.body = 'home'
 })
 
-router.get('/:length', async (ctx) =>{
+router.get('/:length', async (ctx) => {
   const config = getConfig(ctx.params)
   const image = new FakeImg(config)
-
+  const imageBase64 = image.toDraw()
+  // console.log(image.toDraw())
 
   ctx.type = 'image/png'
   ctx.status = 200
-  ctx.body = image
+  ctx.body = imageBase64
 })
 
 // router.get('/:length/:color', async (ctx) =>{
@@ -46,5 +46,3 @@ app.use(router.routes()).use(router.allowedMethods())
 
 app.listen(PORT)
 console.log(`listen ${PORT}--------------`)
-
-

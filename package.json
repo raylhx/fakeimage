@@ -18,6 +18,7 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^7.5.0",
+    "koa-bodyparser": "^4.3.0",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
@@ -29,7 +30,6 @@
     "@babel/preset-env": "^7.10.4",
     "canvas": "^2.6.1",
     "koa": "^2.13.0",
-    "koa-bodyparser": "^3.2.0",
     "koa-router": "7",
     "log4js": "^6.3.0"
   }
