@@ -1,6 +1,10 @@
 const {
   createCanvas
 } = require('canvas')
+
+const {
+  colorRgba
+} = require('./index')
 // 生成图片
 module.exports = class FakeImg {
   constructor(config) {
@@ -17,7 +21,8 @@ module.exports = class FakeImg {
       ctx.font = `${this.width / 4}Impact`
       ctx.fillText('Awesome!', this.width / 2, this.height / 2)
     }
-    ctx.fillStyle = ctx.fillStyle = 'rgba(255,255,0,1)'
+    console.log('aaa', this.color)
+    ctx.fillStyle = ctx.fillStyle = colorRgba(this.color)
     ctx.fillRect(0, 0, this.width, this.height)
     let buffer = canvas.toBuffer()
     return buffer

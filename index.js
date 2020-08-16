@@ -20,18 +20,23 @@ router.get('/:length', async (ctx) => {
   const config = getConfig(ctx.params)
   const image = new FakeImg(config)
   const imageBase64 = image.toDraw()
+  ctx.type = 'image/png'
+  ctx.status = 200
+  ctx.body = imageBase64
+})
+
+router.get('/:length/:color', async (ctx) => {
+  console.log('~~~~', ctx.params)
+  const config = getConfig(ctx.params)
+  const image = new FakeImg(config)
+  const imageBase64 = image.toDraw()
+  // console.log(ctx.params)
   // console.log(image.toDraw())
 
   ctx.type = 'image/png'
   ctx.status = 200
   ctx.body = imageBase64
 })
-
-// router.get('/:length/:color', async (ctx) =>{
-//   const {width, height}= getLength(ctx.params)
-//   const color = getColor(ctx.params)
-//   ctx.body = 'len'
-// })
 // router.get('/:length/:color/:text', async (ctx) =>{
 //   const {width, height}= getLength(ctx.params)
 //   const color = getColor(ctx.params)
