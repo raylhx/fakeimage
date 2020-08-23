@@ -1,4 +1,4 @@
-const DEFAULT_COLOR = '#282828'
+const DEFAULT_COLOR = '282828'
 const DEFAULT_LENGTH = 200
 const DEFAULT_TEXT = ''
 // 十六进制颜色值的正则表达式
@@ -27,11 +27,9 @@ function getLength(params = {}) {
 
 function getColor(params = {}) {
   const color = params.color || DEFAULT_COLOR
-  // const colorReg = /#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})/g
-  // if (!colorReg.test(color)) {
-  //   return DEFAULT_COLOR
-  // }
-  console.log('aaaaaaaa', params)
+  if (!colorReg.test(color)) {
+    return DEFAULT_COLOR
+  }
   return color
 }
 
@@ -40,12 +38,11 @@ function getText(params = {}) {
   return text
 }
 
-function getConfig(params = {}) {
+function getConfig(params = {}, origin) {
   const {
     width,
     height
   } = getLength(params)
-  console.log('getConfig', params)
   const color = getColor(params)
   const text = getText(params)
   return {
@@ -65,21 +62,21 @@ function colorRgba(sHex, alpha = 1) {
   /* 16进制颜色转为RGB格式 */
   let sColor = sHex.toLowerCase()
   if (sColor && colorReg.test(sColor)) {
-    if (sColor.length === 4) {
-      var sColorNew = '#'
-      for (let i = 1; i < 4; i += 1) {
+    if (sColor.length === 3) {
+      var sColorNew = ''
+      for (let i = 0; i < 3; i += 1) {
         sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1))
       }
       sColor = sColorNew
     }
     //  处理六位的颜色值
     var sColorChange = []
-    for (let i = 1; i < 7; i += 2) {
+    for (let i = 0; i < 6; i += 2) {
       sColorChange.push(parseInt('0x' + sColor.slice(i, i + 2)))
     }
     return `rgba(${sColorChange.join(',')},${alpha})`
   } else {
-    return 'rgba(255,0,0,0)'
+    return 'rgba(40,40,40,1)'
   }
 }
 

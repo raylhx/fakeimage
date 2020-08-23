@@ -17,13 +17,16 @@ module.exports = class FakeImg {
   toDraw() {
     const canvas = createCanvas(this.width, this.height)
     const ctx = canvas.getContext('2d')
-    if (this.text) {
-      ctx.font = `${this.width / 4}Impact`
-      ctx.fillText('Awesome!', this.width / 2, this.height / 2)
-    }
-    console.log('aaa', this.color)
-    ctx.fillStyle = ctx.fillStyle = colorRgba(this.color)
+
+    ctx.fillStyle = colorRgba(this.color)
     ctx.fillRect(0, 0, this.width, this.height)
+
+    if (this.text) {
+      ctx.font = `${this.width / 6}px Impact`
+      ctx.fillStyle = '#ffffff'
+      ctx.fillText(this.text, this.width * 0.1, this.height * 0.5)
+    }
+
     let buffer = canvas.toBuffer()
     return buffer
   }
